@@ -30,6 +30,11 @@ Please visit to see the catalog website deployed.
   $ sudo apt-get update
   $ sudo apt-get upgrade
   ```
+  NOTE: If there are packages pending after using the two previous commands, update and upgrade with:
+  ```sh
+  $ sudo apt-get update && sudo apt-get dist-upgrade
+  ```
+  For reference check this [thread](https://serverfault.com/questions/265410/ubuntu-server-message-says-packages-can-be-updated-but-apt-get-does-not-update)
 - Change SSH port from 22 to 2200:
 You need to manually edit sshd_config file and change port number 22 to 2200. Please make sure that the external AWS firewall is configured accordingly too. To edit sshd_config:
   ```sh
@@ -106,6 +111,9 @@ After applying the preceeding rules you can activate the UFW:
   ```
   pw authentication no
   ```
+- Prohibit remote login as `root` in `ssh_config`:
+  `PermitRootLogin no`
+  
 - Restart `ssh` service:
   `$ sudo service ssh restart`
 
